@@ -238,4 +238,37 @@ Module
     deckIdx: module.deckIdx
     active: module.active && !samples.isSlotSelected && !module.isLinkedDeckEncoderInUse
   }
+
+
+  // <CUSTOM> Auto sync loaded deck
+  AppProperty { id: deck1Loaded; path: "app.traktor.decks.1.is_loaded" }
+  AppProperty { id: deck2Loaded; path: "app.traktor.decks.2.is_loaded" }
+  AppProperty { id: deck3Loaded; path: "app.traktor.decks.3.is_loaded" }
+  AppProperty { id: deck4Loaded; path: "app.traktor.decks.4.is_loaded" }
+  AppProperty { id: deck1Synced; path: "app.traktor.decks.1.sync.enabled" }
+  AppProperty { id: deck2Synced; path: "app.traktor.decks.2.sync.enabled" }
+  AppProperty { id: deck3Synced; path: "app.traktor.decks.3.sync.enabled" }
+  AppProperty { id: deck4Synced; path: "app.traktor.decks.4.sync.enabled" }
+  AppProperty { path: "app.traktor.decks.1.is_loaded_signal";  onValueChanged: onDeckLoaded(1); }
+  AppProperty { path: "app.traktor.decks.2.is_loaded_signal";  onValueChanged: onDeckLoaded(2); }
+  AppProperty { path: "app.traktor.decks.3.is_loaded_signal";  onValueChanged: onDeckLoaded(3); }
+  AppProperty { path: "app.traktor.decks.4.is_loaded_signal";  onValueChanged: onDeckLoaded(4); }
+
+  function onDeckLoaded(deckId) {
+    switch (deckId) {
+    case 1:
+      if (deck1Loaded.value) { deck1Synced.value = true }
+      break
+    case 2:
+      if (deck2Loaded.value) { deck2Synced.value = true }
+      break
+    case 3:
+      if (deck3Loaded.value) { deck3Synced.value = true }
+      break
+    case 4:
+      if (deck4Loaded.value) { deck4Synced.value = true }
+      break
+    }
+  }
+  // </CUSTOM>
 }
