@@ -11,6 +11,8 @@ QtObject
   readonly property int stems:       3
   readonly property int freeze:      4
   readonly property int loop:        5
+  readonly property int customjump:  6
+  readonly property int customloop:  7
 
   function isPadsModeSupported(padMode, deckType)
   {
@@ -27,6 +29,9 @@ QtObject
       case freeze:
       case loop:
         return deckType != DeckType.Live;
+      case customjump:
+      case customloop:
+        return deckType == DeckType.Track;
     }
   }
 

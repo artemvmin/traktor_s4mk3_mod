@@ -191,7 +191,7 @@ Module
   }
 
   S4MK3Stems
-  {  
+  {
     id: stems
     name: "stems"
     surface: module.surface
@@ -202,7 +202,7 @@ Module
   }
 
   S4MK3Samples
-  {  
+  {
     id: samples
     name: "samples"
     shift: module.shift
@@ -213,7 +213,7 @@ Module
   }
 
   S4MK3TransportButtons
-  {  
+  {
     name: "transport"
     surface: module.surface
     deckIdx: module.deckIdx
@@ -240,7 +240,150 @@ Module
   }
 
 
-  // <CUSTOM> Auto sync loaded deck
+  // <CUSTOM>
+  // Jump pads
+  AppProperty { id: deckMoveMode;     path: "app.traktor.decks." + (module.deckIdx) + ".move.mode"              }
+  AppProperty { id: deckMoveSize;     path: "app.traktor.decks." + (module.deckIdx) + ".move.size"              }
+  AppProperty { id: deckMove;         path: "app.traktor.decks." + (module.deckIdx) + ".move"                   }
+  AppProperty { id: setLoopIn;        path: "app.traktor.decks." + (module.deckIdx) + ".loop.set.in"            }
+  AppProperty { id: setLoopOut;       path: "app.traktor.decks." + (module.deckIdx) + ".loop.set.out"           }
+  AppProperty { id: deckInActiveLoop; path: "app.traktor.decks." + (module.deckIdx) + ".loop.is_in_active_loop" }
+
+  readonly property real onBrightness:     1.0
+  readonly property real dimmedBrightness: 0.0
+  property int jumpLight: 0
+
+  function updateMoveMode() {
+    if (deckInActiveLoop.value) {
+      deckMoveMode.value = 1
+    } else {
+      deckMoveMode.value = 0
+    }
+  }
+
+  WiresGroup {
+    enabled: padsMode == PadsMode.customjump && module.enablePads
+
+    Wire { from: "%surface%.pads.2"; to: ButtonScriptAdapter {
+      brightness: deckInActiveLoop.value ? onBrightness : dimmedBrightness;
+      color: Color.Green;
+      onPress: { setLoopIn.value = 1 }
+    }}
+    Wire { from: "%surface%.pads.3"; to: ButtonScriptAdapter {
+      brightness: deckInActiveLoop.value ? onBrightness : dimmedBrightness;
+      color: Color.Green;
+      onPress: { setLoopOut.value = 1 }
+    }}
+    Wire { from: "%surface%.pads.6"; to: ButtonScriptAdapter {
+      brightness: jumpLight == 4 ? onBrightness : dimmedBrightness;
+      color: Color.WarmYellow;
+      onPress: { updateMoveMode(); deckMoveSize.value = MoveSize.move_1; deckMove.value = -1; jumpLight = 4 }
+      onRelease: { jumpLight = 0 }
+    }}
+    Wire { from: "%surface%.pads.7"; to: ButtonScriptAdapter {
+      brightness: jumpLight == 5 ? onBrightness : dimmedBrightness;
+      color: Color.WarmYellow;
+      onPress: { updateMoveMode(); deckMoveSize.value = MoveSize.move_1; deckMove.value = 1; jumpLight = 5 }
+      onRelease: { jumpLight = 0 }
+    }}
+
+    WiresGroup {
+      enabled: !module.shift
+
+      Wire { from: "%surface%.pads.1"; to: ButtonScriptAdapter {
+        brightness: jumpLight == 1 ? onBrightness : dimmedBrightness;
+        color: Color.Blue;
+        onPress: { updateMoveMode(); deckMoveSize.value = MoveSize.move_32; deckMove.value = -1; jumpLight = 1 }
+        onRelease: { jumpLight = 0 }
+      }}
+      Wire { from: "%surface%.pads.4"; to: ButtonScriptAdapter {
+        brightness: jumpLight == 2 ? onBrightness : dimmedBrightness;
+        color: Color.Blue;
+        onPress: { updateMoveMode(); deckMoveSize.value = MoveSize.move_32; deckMove.value = 1; jumpLight = 2 }
+        onRelease: { jumpLight = 0 }
+      }}
+      Wire { from: "%surface%.pads.5"; to: ButtonScriptAdapter {
+        brightness: jumpLight == 3 ? onBrightness : dimmedBrightness;
+        color: Color.Red;
+        onPress: { updateMoveMode(); deckMoveSize.value = MoveSize.move_8; deckMove.value = -1; jumpLight = 3 }
+        onRelease: { jumpLight = 0 }
+      }}
+      Wire { from: "%surface%.pads.8"; to: ButtonScriptAdapter {
+        brightness: jumpLight == 6 ? onBrightness : dimmedBrightness;
+        color: Color.Red;
+        onPress: { updateMoveMode(); deckMoveSize.value = MoveSize.move_8; deckMove.value = 1; jumpLight = 6 }
+        onRelease: { jumpLight = 0 }
+      }}
+    }
+
+    WiresGroup {
+      enabled: module.shift
+
+      Wire { from: "%surface%.pads.1"; to: ButtonScriptAdapter {
+        brightness: jumpLight == 1 ? onBrightness : dimmedBrightness;
+        color: Color.Plum;
+        onPress: { updateMoveMode(); deckMoveSize.value = MoveSize.move_16; deckMove.value = -1; jumpLight = 1 }
+        onRelease: { jumpLight = 0 }
+      }}
+      Wire { from: "%surface%.pads.4"; to: ButtonScriptAdapter {
+        brightness: jumpLight == 2 ? onBrightness : dimmedBrightness;
+        color: Color.Plum;
+        onPress: { updateMoveMode(); deckMoveSize.value = MoveSize.move_16; deckMove.value = 1; jumpLight = 2 }
+        onRelease: { jumpLight = 0 }
+      }}
+      Wire { from: "%surface%.pads.5"; to: ButtonScriptAdapter {
+        brightness: jumpLight == 3 ? onBrightness : dimmedBrightness;
+        color: Color.DarkOrange;
+        onPress: { updateMoveMode(); deckMoveSize.value = MoveSize.move_4; deckMove.value = -1; jumpLight = 3 }
+        onRelease: { jumpLight = 0 }
+      }}
+      Wire { from: "%surface%.pads.8"; to: ButtonScriptAdapter {
+        brightness: jumpLight == 6 ? onBrightness : dimmedBrightness;
+        color: Color.DarkOrange;
+        onPress: { updateMoveMode(); deckMoveSize.value = MoveSize.move_4; deckMove.value = 1; jumpLight = 6 }
+        onRelease: { jumpLight = 0 }
+      }}
+    }
+  }
+
+  // Loop pads
+  ButtonSection { name: "loop_pads";  buttons: 8; color: Color.Green; stateHandling: ButtonSection.External }
+
+  MappingPropertyDescriptor { id: loop_1_16; path: propertiesPath + ".loopSize_1_16"; type: MappingPropertyDescriptor.Integer; value: LoopSize.loop_1_16 }
+  MappingPropertyDescriptor { id: loop_1_8;  path: propertiesPath + ".loopSize_1_8" ; type: MappingPropertyDescriptor.Integer; value: LoopSize.loop_1_8  }
+  MappingPropertyDescriptor { id: loop_1_4;  path: propertiesPath + ".loopSize_1_4" ; type: MappingPropertyDescriptor.Integer; value: LoopSize.loop_1_4  }
+  MappingPropertyDescriptor { id: loop_1_2;  path: propertiesPath + ".loopSize_1_2" ; type: MappingPropertyDescriptor.Integer; value: LoopSize.loop_1_2  }
+  MappingPropertyDescriptor { id: loop_1;    path: propertiesPath + ".loopSize_1"   ; type: MappingPropertyDescriptor.Integer; value: LoopSize.loop_1    }
+  MappingPropertyDescriptor { id: loop_2;    path: propertiesPath + ".loopSize_2"   ; type: MappingPropertyDescriptor.Integer; value: LoopSize.loop_2    }
+  MappingPropertyDescriptor { id: loop_4;    path: propertiesPath + ".loopSize_4"   ; type: MappingPropertyDescriptor.Integer; value: LoopSize.loop_4    }
+  MappingPropertyDescriptor { id: loop_8;    path: propertiesPath + ".loopSize_8"   ; type: MappingPropertyDescriptor.Integer; value: LoopSize.loop_8    }
+
+  Wire { from: DirectPropertyAdapter { path: propertiesPath + ".loopSize_1_16"; input: false } to: "loop_pads.button1.value" }
+  Wire { from: DirectPropertyAdapter { path: propertiesPath + ".loopSize_1_8" ; input: false } to: "loop_pads.button2.value" }
+  Wire { from: DirectPropertyAdapter { path: propertiesPath + ".loopSize_1_4" ; input: false } to: "loop_pads.button3.value" }
+  Wire { from: DirectPropertyAdapter { path: propertiesPath + ".loopSize_1_2" ; input: false } to: "loop_pads.button4.value" }
+  Wire { from: DirectPropertyAdapter { path: propertiesPath + ".loopSize_1"   ; input: false } to: "loop_pads.button5.value" }
+  Wire { from: DirectPropertyAdapter { path: propertiesPath + ".loopSize_2"   ; input: false } to: "loop_pads.button6.value" }
+  Wire { from: DirectPropertyAdapter { path: propertiesPath + ".loopSize_4"   ; input: false } to: "loop_pads.button7.value" }
+  Wire { from: DirectPropertyAdapter { path: propertiesPath + ".loopSize_8"   ; input: false } to: "loop_pads.button8.value" }
+
+  WiresGroup {
+    enabled: padsMode == PadsMode.customloop && module.enablePads
+
+    Wire { from: "%surface%.pads.1";   to: "loop_pads.button1" }
+    Wire { from: "%surface%.pads.2";   to: "loop_pads.button2" }
+    Wire { from: "%surface%.pads.3";   to: "loop_pads.button3" }
+    Wire { from: "%surface%.pads.4";   to: "loop_pads.button4" }
+    Wire { from: "%surface%.pads.5";   to: "loop_pads.button5" }
+    Wire { from: "%surface%.pads.6";   to: "loop_pads.button6" }
+    Wire { from: "%surface%.pads.7";   to: "loop_pads.button7" }
+    Wire { from: "%surface%.pads.8";   to: "loop_pads.button8" }
+
+    Wire { from: "loop_pads.value";  to: "loop.autoloop_size"   }
+    Wire { from: "loop_pads.active"; to: "loop.autoloop_active" }
+  }
+
+  // Auto sync loaded deck
   AppProperty { id: deck1Loaded; path: "app.traktor.decks.1.is_loaded" }
   AppProperty { id: deck2Loaded; path: "app.traktor.decks.2.is_loaded" }
   AppProperty { id: deck3Loaded; path: "app.traktor.decks.3.is_loaded" }
