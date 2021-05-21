@@ -17,7 +17,7 @@ Traktor Pro 3.3.0
   - PUSH ADD-TO-LIST to add/remove from the prep list
   - SHIFT + PUSH ADD-TO-LIST to jump to the prep list
 
-[1] Preparation requires you to manually select a prep list by right clicking on a playlist in the Traktor software and [Select as Preparation List].
+[1] Preparation requires you to manually select a prep list by right clicking on a playlist in the Traktor software and clicking [Select as Preparation List].
 
 ### Jump Mode
 
