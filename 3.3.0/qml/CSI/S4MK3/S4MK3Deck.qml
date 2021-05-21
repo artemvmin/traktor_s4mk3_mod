@@ -349,23 +349,23 @@ Module
   // Loop pads
   ButtonSection { name: "loop_pads";  buttons: 8; color: Color.Green; stateHandling: ButtonSection.External }
 
-  MappingPropertyDescriptor { id: loop_1_16; path: propertiesPath + ".loopSize_1_16"; type: MappingPropertyDescriptor.Integer; value: LoopSize.loop_1_16 }
-  MappingPropertyDescriptor { id: loop_1_8;  path: propertiesPath + ".loopSize_1_8" ; type: MappingPropertyDescriptor.Integer; value: LoopSize.loop_1_8  }
-  MappingPropertyDescriptor { id: loop_1_4;  path: propertiesPath + ".loopSize_1_4" ; type: MappingPropertyDescriptor.Integer; value: LoopSize.loop_1_4  }
-  MappingPropertyDescriptor { id: loop_1_2;  path: propertiesPath + ".loopSize_1_2" ; type: MappingPropertyDescriptor.Integer; value: LoopSize.loop_1_2  }
-  MappingPropertyDescriptor { id: loop_1;    path: propertiesPath + ".loopSize_1"   ; type: MappingPropertyDescriptor.Integer; value: LoopSize.loop_1    }
-  MappingPropertyDescriptor { id: loop_2;    path: propertiesPath + ".loopSize_2"   ; type: MappingPropertyDescriptor.Integer; value: LoopSize.loop_2    }
-  MappingPropertyDescriptor { id: loop_4;    path: propertiesPath + ".loopSize_4"   ; type: MappingPropertyDescriptor.Integer; value: LoopSize.loop_4    }
-  MappingPropertyDescriptor { id: loop_8;    path: propertiesPath + ".loopSize_8"   ; type: MappingPropertyDescriptor.Integer; value: LoopSize.loop_8    }
+  MappingPropertyDescriptor { id: loop_1_8;  path: propertiesPath + ".loopSize_1_8" ; type: MappingPropertyDescriptor.Integer; value: LoopSize.loop_1_8 }
+  MappingPropertyDescriptor { id: loop_1_4;  path: propertiesPath + ".loopSize_1_4" ; type: MappingPropertyDescriptor.Integer; value: LoopSize.loop_1_4 }
+  MappingPropertyDescriptor { id: loop_1_2;  path: propertiesPath + ".loopSize_1_2" ; type: MappingPropertyDescriptor.Integer; value: LoopSize.loop_1_2 }
+  MappingPropertyDescriptor { id: loop_1;    path: propertiesPath + ".loopSize_1"   ; type: MappingPropertyDescriptor.Integer; value: LoopSize.loop_1   }
+  MappingPropertyDescriptor { id: loop_4;    path: propertiesPath + ".loopSize_4"   ; type: MappingPropertyDescriptor.Integer; value: LoopSize.loop_4   }
+  MappingPropertyDescriptor { id: loop_8;    path: propertiesPath + ".loopSize_8"   ; type: MappingPropertyDescriptor.Integer; value: LoopSize.loop_8   }
+  MappingPropertyDescriptor { id: loop_16;   path: propertiesPath + ".loopSize_16"  ; type: MappingPropertyDescriptor.Integer; value: LoopSize.loop_16  }
+  MappingPropertyDescriptor { id: loop_32;   path: propertiesPath + ".loopSize_32"  ; type: MappingPropertyDescriptor.Integer; value: LoopSize.loop_32  }
 
-  Wire { from: DirectPropertyAdapter { path: propertiesPath + ".loopSize_1_16"; input: false } to: "loop_pads.button1.value" }
-  Wire { from: DirectPropertyAdapter { path: propertiesPath + ".loopSize_1_8" ; input: false } to: "loop_pads.button2.value" }
-  Wire { from: DirectPropertyAdapter { path: propertiesPath + ".loopSize_1_4" ; input: false } to: "loop_pads.button3.value" }
-  Wire { from: DirectPropertyAdapter { path: propertiesPath + ".loopSize_1_2" ; input: false } to: "loop_pads.button4.value" }
-  Wire { from: DirectPropertyAdapter { path: propertiesPath + ".loopSize_1"   ; input: false } to: "loop_pads.button5.value" }
-  Wire { from: DirectPropertyAdapter { path: propertiesPath + ".loopSize_2"   ; input: false } to: "loop_pads.button6.value" }
-  Wire { from: DirectPropertyAdapter { path: propertiesPath + ".loopSize_4"   ; input: false } to: "loop_pads.button7.value" }
-  Wire { from: DirectPropertyAdapter { path: propertiesPath + ".loopSize_8"   ; input: false } to: "loop_pads.button8.value" }
+  Wire { from: DirectPropertyAdapter { path: propertiesPath + ".loopSize_1_8" ; input: false } to: "loop_pads.button1.value" }
+  Wire { from: DirectPropertyAdapter { path: propertiesPath + ".loopSize_1_4" ; input: false } to: "loop_pads.button2.value" }
+  Wire { from: DirectPropertyAdapter { path: propertiesPath + ".loopSize_1_2" ; input: false } to: "loop_pads.button3.value" }
+  Wire { from: DirectPropertyAdapter { path: propertiesPath + ".loopSize_1"   ; input: false } to: "loop_pads.button4.value" }
+  Wire { from: DirectPropertyAdapter { path: propertiesPath + ".loopSize_4"   ; input: false } to: "loop_pads.button5.value" }
+  Wire { from: DirectPropertyAdapter { path: propertiesPath + ".loopSize_8"   ; input: false } to: "loop_pads.button6.value" }
+  Wire { from: DirectPropertyAdapter { path: propertiesPath + ".loopSize_16"  ; input: false } to: "loop_pads.button7.value" }
+  Wire { from: DirectPropertyAdapter { path: propertiesPath + ".loopSize_32"  ; input: false } to: "loop_pads.button8.value" }
 
   WiresGroup {
     enabled: padsMode == PadsMode.customloop && module.enablePads
