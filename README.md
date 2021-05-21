@@ -14,10 +14,10 @@ Traktor Pro 3.3.0
   - PUSH STAR [★] to toggle sort by BPM or Key
   - SHIFT + PUSH STAR [★] to invert sort order
 - Preparation [1]:
-  - PUSH ADD-TO-LIST to add/remove from the preparation playlist
-  - SHIFT + PUSH ADD-TO-LIST to jump to preparation playlist
+  - PUSH ADD-TO-LIST to add/remove from the prep list
+  - SHIFT + PUSH ADD-TO-LIST to jump to the prep list
 
-[1] Preparation requires you to manually select a preparation playlist by right clicking on a playlist in the Traktor software.
+[1] Preparation requires you to manually select a prep list by right clicking on a playlist in the Traktor software and [Select as Preparation List].
 
 ### Jump Mode
 
@@ -31,7 +31,7 @@ Layout:
 |:---:|:-------:|:--------:|:--:|
 |  -8 |    -1   |     1    |  8 |
 
-Layout (with SHIFT held):
+Layout (with SHIFT or SAMPLES held):
 
 | -16 | loop in | loop out | 16 |
 |:---:|:-------:|:--------:|:--:|
@@ -46,5 +46,5 @@ Loop mode allows you to initiate loops using the pads. This works really well wi
 Layout:
 
 | 1/8 | 1/4 | 1/2 |  1 |
-|:----:|:---:|:---:|:---:|
+|:---:|:---:|:---:|:--:|
 |  4  |  8  |  16 | 32 |
