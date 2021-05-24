@@ -274,18 +274,6 @@ Module
       color: Color.Green;
       onPress: { setLoopOut.value = 1 }
     }}
-    Wire { from: "%surface%.pads.6"; to: ButtonScriptAdapter {
-      brightness: jumpLight == 4 ? onBrightness : dimmedBrightness;
-      color: Color.WarmYellow;
-      onPress: { updateMoveMode(); deckMoveSize.value = MoveSize.move_1; deckMove.value = -1; jumpLight = 4 }
-      onRelease: { jumpLight = 0 }
-    }}
-    Wire { from: "%surface%.pads.7"; to: ButtonScriptAdapter {
-      brightness: jumpLight == 5 ? onBrightness : dimmedBrightness;
-      color: Color.WarmYellow;
-      onPress: { updateMoveMode(); deckMoveSize.value = MoveSize.move_1; deckMove.value = 1; jumpLight = 5 }
-      onRelease: { jumpLight = 0 }
-    }}
 
     WiresGroup {
       enabled: !module.shift
@@ -304,14 +292,26 @@ Module
       }}
       Wire { from: "%surface%.pads.5"; to: ButtonScriptAdapter {
         brightness: jumpLight == 3 ? onBrightness : dimmedBrightness;
-        color: Color.Red;
-        onPress: { updateMoveMode(); deckMoveSize.value = MoveSize.move_8; deckMove.value = -1; jumpLight = 3 }
+        color: Color.Plum;
+        onPress: { updateMoveMode(); deckMoveSize.value = MoveSize.move_16; deckMove.value = -1; jumpLight = 3 }
         onRelease: { jumpLight = 0 }
       }}
       Wire { from: "%surface%.pads.8"; to: ButtonScriptAdapter {
         brightness: jumpLight == 6 ? onBrightness : dimmedBrightness;
-        color: Color.Red;
-        onPress: { updateMoveMode(); deckMoveSize.value = MoveSize.move_8; deckMove.value = 1; jumpLight = 6 }
+        color: Color.Plum;
+        onPress: { updateMoveMode(); deckMoveSize.value = MoveSize.move_16; deckMove.value = 1; jumpLight = 6 }
+        onRelease: { jumpLight = 0 }
+      }}
+      Wire { from: "%surface%.pads.6"; to: ButtonScriptAdapter {
+        brightness: jumpLight == 4 ? onBrightness : dimmedBrightness;
+        color: Color.WarmYellow;
+        onPress: { updateMoveMode(); deckMoveSize.value = MoveSize.move_1; deckMove.value = -1; jumpLight = 4 }
+        onRelease: { jumpLight = 0 }
+      }}
+      Wire { from: "%surface%.pads.7"; to: ButtonScriptAdapter {
+        brightness: jumpLight == 5 ? onBrightness : dimmedBrightness;
+        color: Color.WarmYellow;
+        onPress: { updateMoveMode(); deckMoveSize.value = MoveSize.move_1; deckMove.value = 1; jumpLight = 5 }
         onRelease: { jumpLight = 0 }
       }}
     }
@@ -321,14 +321,14 @@ Module
 
       Wire { from: "%surface%.pads.1"; to: ButtonScriptAdapter {
         brightness: jumpLight == 1 ? onBrightness : dimmedBrightness;
-        color: Color.Plum;
-        onPress: { updateMoveMode(); deckMoveSize.value = MoveSize.move_16; deckMove.value = -1; jumpLight = 1 }
+        color: Color.Red;
+        onPress: { updateMoveMode(); deckMoveSize.value = MoveSize.move_8; deckMove.value = -1; jumpLight = 1 }
         onRelease: { jumpLight = 0 }
       }}
       Wire { from: "%surface%.pads.4"; to: ButtonScriptAdapter {
         brightness: jumpLight == 2 ? onBrightness : dimmedBrightness;
-        color: Color.Plum;
-        onPress: { updateMoveMode(); deckMoveSize.value = MoveSize.move_16; deckMove.value = 1; jumpLight = 2 }
+        color: Color.Red;
+        onPress: { updateMoveMode(); deckMoveSize.value = MoveSize.move_8; deckMove.value = 1; jumpLight = 2 }
         onRelease: { jumpLight = 0 }
       }}
       Wire { from: "%surface%.pads.5"; to: ButtonScriptAdapter {
@@ -341,6 +341,18 @@ Module
         brightness: jumpLight == 6 ? onBrightness : dimmedBrightness;
         color: Color.DarkOrange;
         onPress: { updateMoveMode(); deckMoveSize.value = MoveSize.move_4; deckMove.value = 1; jumpLight = 6 }
+        onRelease: { jumpLight = 0 }
+      }}
+      Wire { from: "%surface%.pads.6"; to: ButtonScriptAdapter {
+        brightness: jumpLight == 4 ? onBrightness : dimmedBrightness;
+        color: Color.LightOrange;
+        onPress: { updateMoveMode(); deckMoveSize.value = MoveSize.move_2; deckMove.value = -1; jumpLight = 4 }
+        onRelease: { jumpLight = 0 }
+      }}
+      Wire { from: "%surface%.pads.7"; to: ButtonScriptAdapter {
+        brightness: jumpLight == 5 ? onBrightness : dimmedBrightness;
+        color: Color.LightOrange;
+        onPress: { updateMoveMode(); deckMoveSize.value = MoveSize.move_2; deckMove.value = 1; jumpLight = 5 }
         onRelease: { jumpLight = 0 }
       }}
     }
