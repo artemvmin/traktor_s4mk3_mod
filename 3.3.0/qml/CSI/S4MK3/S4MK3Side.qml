@@ -125,7 +125,7 @@ Module
   Wire {
     enabled: PadsMode.isPadsModeSupported(PadsMode.customloop, focusedDeck().deckType)
     from: "%surface%.stems"
-    to: SetPropertyAdapter  { path: propertiesPath + ".pads_mode"; value: PadsMode.customloop; color: Color.Green }
+    to: SetPropertyAdapter  { path: propertiesPath + ".pads_mode"; value: PadsMode.customloop; color: Helpers.colorForDeck(focusedDeckIdx) }
   }
   // </CUSTOM>
 
