@@ -49,6 +49,12 @@ Layout:
 |:---:|:---:|:---:|:--:|
 |  4  |  8  |  16 | 32 |
 
+### Transport
+
+- PUSH RECORD to toggle flux
+- PUSH MUTE to toggle snap
+- Quant/snap buttons reversed for easier snap access
+
 ## Installation
 
 **Windows:**

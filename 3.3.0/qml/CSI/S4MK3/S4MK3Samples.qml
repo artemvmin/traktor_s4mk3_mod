@@ -33,7 +33,7 @@ Module
     return "app.traktor.decks." + module.deckIdx + ".remix.players." + playerId;
   }
 
-  Wire { from: "%surface%.mute"; to: HoldPropertyAdapter { path: deckPropertiesPath + ".mute"; value: true  } }
+  // Wire { from: "%surface%.mute"; to: HoldPropertyAdapter { path: deckPropertiesPath + ".mute"; value: true  } }
 
   WiresGroup
   {

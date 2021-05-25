@@ -30,5 +30,10 @@ Module
     Wire { from: "%surface%.master";    to: "transport.master"            ; enabled: !module.shift }
     Wire { from: "%surface%.cue";       to: "transport.cue"               ; enabled: !module.shift }
     Wire { from: "%surface%.cue";       to: "transport.return_to_zero"    ; enabled:  module.shift }
+
+    // <CUSTOM>
+    Wire { from: "%surface%.record"; to: "transport.flux" }
+    Wire { from: "%surface%.mute"; to: TogglePropertyAdapter { path: "app.traktor.snap" } }
+    // </CUSTOM>
   }   
 }
