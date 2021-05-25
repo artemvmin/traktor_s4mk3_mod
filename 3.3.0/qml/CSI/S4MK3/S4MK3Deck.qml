@@ -242,18 +242,20 @@ Module
 
   // <CUSTOM>
   // Jump pads
-  AppProperty { id: deckMoveMode;     path: "app.traktor.decks." + (module.deckIdx) + ".move.mode"              }
-  AppProperty { id: deckMoveSize;     path: "app.traktor.decks." + (module.deckIdx) + ".move.size"              }
-  AppProperty { id: deckMove;         path: "app.traktor.decks." + (module.deckIdx) + ".move"                   }
-  AppProperty { id: setLoopIn;        path: "app.traktor.decks." + (module.deckIdx) + ".loop.set.in"            }
-  AppProperty { id: setLoopOut;       path: "app.traktor.decks." + (module.deckIdx) + ".loop.set.out"           }
-  AppProperty { id: deckInActiveLoop; path: "app.traktor.decks." + (module.deckIdx) + ".loop.is_in_active_loop" }
+  AppProperty { id: deckMoveMode;     path: "app.traktor.decks." + module.deckIdx + ".move.mode"              }
+  AppProperty { id: deckMoveSize;     path: "app.traktor.decks." + module.deckIdx + ".move.size"              }
+  AppProperty { id: deckMove;         path: "app.traktor.decks." + module.deckIdx + ".move"                   }
+  AppProperty { id: setLoopIn;        path: "app.traktor.decks." + module.deckIdx + ".loop.set.in"            }
+  AppProperty { id: setLoopOut;       path: "app.traktor.decks." + module.deckIdx + ".loop.set.out"           }
+  AppProperty { id: deckInActiveLoop; path: "app.traktor.decks." + module.deckIdx + ".loop.is_in_active_loop" }
+  AppProperty { id: deckFluxEnabled;  path: "app.traktor.decks." + module.deckIdx + ".flux.enabled"           }
 
   readonly property real onBrightness:     1.0
   readonly property real dimmedBrightness: 0.0
   property int jumpLight: 0
 
   function updateMoveMode() {
+    deckFluxEnabled.value = false
     if (deckInActiveLoop.value) {
       deckMoveMode.value = 1
     } else {
