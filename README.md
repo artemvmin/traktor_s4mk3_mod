@@ -53,7 +53,6 @@ Layout:
 
 - PUSH RECORD to toggle flux
 - PUSH MUTE to toggle snap
-- Quant/snap buttons reversed for easier snap access
 
 ## Installation
 
