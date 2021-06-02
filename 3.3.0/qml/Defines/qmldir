@@ -5,3 +5,4 @@ singleton StemStyle   StemStyle.qml
 singleton ScreenView  ScreenView.qml
 singleton PadsMode    PadsMode.qml
 singleton LoopSize    LoopSize.qml
+singleton MoveSize    MoveSize.qml
