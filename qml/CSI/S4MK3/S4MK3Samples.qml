@@ -93,8 +93,8 @@ Module
     {
       enabled: !module.shift
 
-      Wire { from: "%surface%.record"; to: TogglePropertyAdapter  { path: "app.traktor.decks." + deckIdx + ".remix.sequencer.rec.on" } }
-      Wire { from: "%surface%.record"; to: SetPropertyAdapter     { path: "app.traktor.decks." + deckIdx + ".remix.sequencer.on"; value: true; output: false }}
+      // Wire { from: "%surface%.record"; to: TogglePropertyAdapter  { path: "app.traktor.decks." + deckIdx + ".remix.sequencer.rec.on" } }
+      // Wire { from: "%surface%.record"; to: SetPropertyAdapter     { path: "app.traktor.decks." + deckIdx + ".remix.sequencer.on"; value: true; output: false }}
 
       WiresGroup
       {
