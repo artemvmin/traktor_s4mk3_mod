@@ -2,7 +2,9 @@
 
 ## Compatibility
 
-Traktor Pro 3.3.0
+Traktor Pro 3.3.0\*
+
+\* Verified up to 3.4.2
 
 ## Modifications
 
