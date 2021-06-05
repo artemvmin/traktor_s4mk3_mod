@@ -37,6 +37,7 @@ Module
   AppProperty { id: unloadPreviewProp;  path: "app.traktor.browser.preview_player.unload" }
 
   // <CUSTOM>
+  AppProperty { id: viewMode;           path: "app.traktor.browser.full_screen" }
   AppProperty { id: browserSortID;      path: "app.traktor.browser.sort_id" }
   // </CUSTOM>
 
@@ -44,6 +45,7 @@ Module
     enabled: module.active
 
     Wire { from: "%surface%.browse.view";         to: "browser.full_screen" }
+
     // Wire { from: "%surface%.browse.add_to_list";  to: "browser.add_remove_from_prep_list" }
 
     // enable favortie browsing
@@ -71,24 +73,41 @@ Module
     Wire
     {
       from: "%surface%.browse.preview";
-      to: ButtonScriptAdapter
-      {
-        onPress:
-        {
-          loadPreviewProp.value = true;
-          module.encoderMode = module.previewPlayerMode;
-          brightness = onBrightness;
 
+      // <CUSTOM>
+      to: ButtonScriptAdapter {
+        onPress: {
+          if (module.encoderMode == module.listMode) {
+            loadPreviewProp.value = true;
+            module.encoderMode = module.previewPlayerMode;
+          } else {
+            unloadPreviewProp.value = true;
+            module.encoderMode = module.listMode;
+          }
         }
-        onRelease:
-        {
-          unloadPreviewProp.value = true;
-          module.encoderMode = module.listMode;
-          brightness = dimmedBrightness;
-        }
-        brightness: dimmedBrightness
+        brightness: module.encoderMode == module.previewPlayerMode ? onBrightness : dimmedBrightness
         color: module.deckColor
       }
+      // </CUSTOM>
+
+      // to: ButtonScriptAdapter
+      // {
+        // onPress:
+        // {
+          // loadPreviewProp.value = true;
+          // module.encoderMode = module.previewPlayerMode;
+          // brightness = onBrightness;
+
+        // }
+        // onRelease:
+        // {
+          // unloadPreviewProp.value = true;
+          // module.encoderMode = module.listMode;
+          // brightness = dimmedBrightness;
+        // }
+        // brightness: dimmedBrightness
+        // color: module.deckColor
+      // }
     }
 
     // Shift
@@ -113,6 +132,11 @@ Module
       enabled: module.encoderMode == module.listMode;
       Wire { from: "%surface%.browse.encoder"; to: "browser.list_navigation" }
       Wire { from: "%surface%.browse.encoder.push"; to: TriggerPropertyAdapter { path: "app.traktor.decks." + deckIdx + ".load.selected" } }
+      Wire { from: "%surface%.browse.encoder.push"; to: ButtonScriptAdapter {
+        onPress: {
+          viewMode.value = false
+        }
+      }}
 
       // <CUSTOM>
       Wire { from: "%surface%.browse.add_to_list"; to: "browser.add_remove_from_prep_list" }
