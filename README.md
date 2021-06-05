@@ -21,38 +21,33 @@ Traktor Pro 3.4.2
 
 ### Jump Mode
 
-Jump mode allows you to skip around the track using the pads. It also provides fine-tuned looping, allowing you to set the beginning and end of a loop. This means you can create loops of any beat size or even off the grid with snap turned off. If a loop is active, the jumping pads move the loop. Press "loop out" to exit the loop.
+Jump mode allows you to skip around the track and initiate custom loops using the pads. Mark the start of a loop with [loop in] and initiate the loop with [loop out]. Press either button, or the loop knob, to exit the loop. Jumping with a loop enabled moves the entire loop.
 
-- PUSH SAMPLES for jump mode
+- PUSH STEMS for jump mode
 
 Layout:
 
 | -32 | loop in | loop out | 32 |
 |:---:|:-------:|:--------:|:--:|
-| -16 |    -1   |     1    | 16 |
+| -16 |    -8   |     8    | 16 |
 
 Layout (with SHIFT or SAMPLES held):
 
-| -8 | loop in | loop out | 8 |
-|:--:|:-------:|:--------:|:-:|
-| -4 |    -2   |     2    | 4 |
+| -4 |    |   | 4 |
+|:--:|:--:|:-:|:-:|
+| -2 | -1 | 1 | 2 |
 
 ### Loop Mode
 
-Loop mode allows you to initiate loops using the pads. This works really well with FLUX enabled.
+Loop mode allows you to initiate short loops using the pads. I recommend experimenting by enabling FLUX and/or disabling SNAP.
 
-- PUSH STEMS for loop mode
+- PUSH SHIFT + STEMS for loop mode
 
 Layout:
 
-| 1/8 | 1/4 | 1/2 |  1 |
-|:---:|:---:|:---:|:--:|
-|  4  |  8  |  16 | 32 |
-
-### Transport
-
-- PUSH RECORD to toggle flux
-- PUSH MUTE to toggle snap
+| 1/16 | 1/8 | 1/4 | 1/2 |
+|:----:|:---:|:---:|:---:|
+|   1  |  2  |  4  |  8  |
 
 ## Installation
 

@@ -92,54 +92,37 @@ Module
     }  
   }
 
-  // <CUSTOM>
-  readonly property real onBrightness:     1.0
-  readonly property real dimmedBrightness: 0.0
-  // </CUSTOM>
-
   Wire {
     enabled: PadsMode.isPadsModeSupported(PadsMode.hotcues, focusedDeck().deckType);
     from: "%surface%.hotcues";
     to: SetPropertyAdapter  { path: propertiesPath + ".pads_mode"; value: PadsMode.hotcues; color: Helpers.colorForDeck(focusedDeckIdx) }
   }
 
-  // <CUSTOM>
   Wire {
-    enabled: PadsMode.isPadsModeSupported(PadsMode.customjump, focusedDeck().deckType)
-    from: "%surface%.samples"
-    to: ButtonScriptAdapter  {
-      onPress: {
-        if (globalPadsMode.value != PadsMode.customjump) {
-          globalPadsMode.value = PadsMode.customjump
-        } else {
-          shift.value = true
-        }
-      }
-      onRelease: {
-        shift.value = false
-      }
-      brightness: globalPadsMode.value == PadsMode.customjump ? onBrightness : dimmedBrightness
-    }
+    enabled: PadsMode.isPadsModeSupported(PadsMode.remix, bottomDeck.deckType) || PadsMode.isPadsModeSupported(PadsMode.remix, topDeck.deckType);
+    from: "%surface%.samples";
+    to: SetPropertyAdapter  { path: propertiesPath + ".pads_mode"; value: PadsMode.remix }
   }
-
-  Wire {
-    enabled: PadsMode.isPadsModeSupported(PadsMode.customloop, focusedDeck().deckType)
-    from: "%surface%.stems"
-    to: SetPropertyAdapter  { path: propertiesPath + ".pads_mode"; value: PadsMode.customloop; color: Helpers.colorForDeck(focusedDeckIdx) }
-  }
-  // </CUSTOM>
-
-  // Wire {
-    // enabled: PadsMode.isPadsModeSupported(PadsMode.remix, bottomDeck.deckType) || PadsMode.isPadsModeSupported(PadsMode.remix, topDeck.deckType) && shiftProp.value;
-    // from: "%surface%.samples";
-    // to: SetPropertyAdapter  { path: propertiesPath + ".pads_mode"; value: PadsMode.remix }
-  // }
 
   // Wire {
     // enabled: PadsMode.isPadsModeSupported(PadsMode.stems , focusedDeck().deckType) && shiftProp.value;
     // from: "%surface%.stems";
     // to: SetPropertyAdapter  { path: propertiesPath + ".pads_mode"; value: PadsMode.stems; color: Helpers.colorForDeck(focusedDeckIdx)   }
   // }
+
+  // <CUSTOM>
+  Wire {
+    enabled: PadsMode.isPadsModeSupported(PadsMode.customjump, focusedDeck().deckType) && !shiftProp.value
+    from: "%surface%.stems"
+    to: SetPropertyAdapter  { path: propertiesPath + ".pads_mode"; value: PadsMode.customjump; color: Helpers.colorForDeck(focusedDeckIdx) }
+  }
+
+  Wire {
+    enabled: PadsMode.isPadsModeSupported(PadsMode.customloop, focusedDeck().deckType) && shiftProp.value
+    from: "%surface%.stems"
+    to: SetPropertyAdapter  { path: propertiesPath + ".pads_mode"; value: PadsMode.customloop; color: Color.Green }
+  }
+  // </CUSTOM>
 
   // Shift //
   MappingPropertyDescriptor { id: shiftProp; path: propertiesPath + ".shift"; type: MappingPropertyDescriptor.Boolean; value: false }
