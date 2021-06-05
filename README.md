@@ -8,8 +8,6 @@ Traktor Pro 3.4.2
 
 ### Browser
 
-- Loading:
-  - Tracks are automatically synced on load
 - Sorting:
   - PUSH STAR [★] to toggle sort by BPM or Key
   - SHIFT + PUSH STAR [★] to invert sort order
@@ -18,6 +16,8 @@ Traktor Pro 3.4.2
   - SHIFT + PUSH ADD-TO-LIST to jump to the prep list
 
 [1] Preparation requires you to manually select a prep list by right clicking on a playlist in the Traktor software and clicking [Select as Preparation List].
+
+Decks will be synced every time a new track is loaded, as long as at least one other deck is synced. For the optimal sync experience, set the master tempo to AUTO and sync the first track as it is running. This will match the master tempo to the tempo of the running track.
 
 ### Jump Mode
 

@@ -411,7 +411,15 @@ Module
   AppProperty { path: "app.traktor.decks.3.is_loaded_signal";  onValueChanged: onDeckLoaded(3); }
   AppProperty { path: "app.traktor.decks.4.is_loaded_signal";  onValueChanged: onDeckLoaded(4); }
 
+  function anyDeckSynced() {
+    return deck1Synced.value || deck2Synced.value || deck3Synced.value || deck4Synced.value
+  }
+
   function onDeckLoaded(deckId) {
+    if (!anyDeckSynced()) {
+      return
+    }
+
     switch (deckId) {
     case 1:
       if (deck1Loaded.value) { deck1Synced.value = true }
