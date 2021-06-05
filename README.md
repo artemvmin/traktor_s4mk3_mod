@@ -26,33 +26,37 @@ Traktor Pro 3.4.2
 
 ### Jump Mode
 
-Jump mode allows you to skip around the track and initiate custom loops using the pads. Mark the start of a loop with [loop in] and initiate the loop with [loop out]. Press either button, or the loop knob, to exit the loop. Jumping with a loop enabled moves the entire loop.
+Jump mode allows you to skip around the track using the pads.  Jumping with a loop enabled moves the entire loop.
 
 - PUSH STEMS for jump mode
 
 Layout:
 
-| -32 | loop in | loop out | 32 |
-|:---:|:-------:|:--------:|:--:|
-| -16 |    -8   |     8    | 16 |
+|  -4 |  +4 |  -8 |  +8 |
+|:---:|:---:|:---:|:---:|
+| -16 | +16 | -32 | +32 |
 
-Layout (with SHIFT or SAMPLES held):
+Layout (with SHIFT held):
 
-| -4 |    |   | 4 |
-|:--:|:--:|:-:|:-:|
-| -2 | -1 | 1 | 2 |
+| -1 | +1 | -2 | +2 |
+|:--:|:--:|:--:|:--:|
+| -4 | +4 | -8 | +8 |
 
 ### Loop Mode
 
-Loop mode allows you to initiate short loops using the pads. I recommend experimenting by enabling FLUX and/or disabling SNAP.
+Loop mode allows you to initiate loops using the pads. Mark the start of a loop with [loop in] and initiate the loop with [loop out]. Press [loop out] to exit the loop.
 
 - PUSH SHIFT + STEMS for loop mode
 
 Layout:
 
-| 1/16 | 1/8 | 1/4 | 1/2 |
-|:----:|:---:|:---:|:---:|
-|   1  |  2  |  4  |  8  |
+| 1/16 | 1/8 |   1/4   |    1/2   |
+|:----:|:---:|:-------:|:--------:|
+|   1  |  2  | loop in | loop out |
+
+Tips:
+- Enable FLUX to perform quick loops while staying on beat.
+- Disable SNAP to perform loops off the grid.
 
 ## Installation
 
