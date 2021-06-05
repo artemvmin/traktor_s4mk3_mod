@@ -11,12 +11,15 @@ Traktor Pro 3.4.2
 - Sorting:
   - PUSH STAR [★] to toggle sort by BPM or Key
   - SHIFT + PUSH STAR [★] to invert sort order
+- Browsing:
+  - BROWSE KNOB to navigate list
+  - SHIFT + BROWSE KNOB to navigate favorite folders
 - Preview:
-  - PUSH PREVIEW [▷] to load the selected track into the preview player. Push again to unload.
+  - PUSH PREVIEW [▷] to load/unload the selected track into the preview player
   - TURN BROWSE KNOB to seek through the previewed track.
 - Loading:
-  - Loading a track exits full screen list view mode.
-  - A deck will auto-sync when a new track is loaded, as long as at least one other deck is synced.
+  - Loading a track exits full screen list view mode
+  - A deck will auto-sync when a new track is loaded, as long as at least one other deck is synced
 - Preparation [2]:
   - PUSH ADD-TO-LIST to add/remove from the prep list
   - SHIFT + PUSH ADD-TO-LIST to jump to the prep list

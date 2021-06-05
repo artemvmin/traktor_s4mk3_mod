@@ -118,7 +118,11 @@ Module
       {
         onPress:
         {
-          module.encoderMode = module.treeMode;
+          // module.encoderMode = module.treeMode;
+
+          // <CUSTOM>
+          module.encoderMode = module.favoritesMode
+          // </CUSTOM>
         }
         onRelease:
         {
@@ -153,28 +157,6 @@ Module
       // </CUSTOM>
     }
 
-    // tree mode
-    WiresGroup {
-      enabled: module.encoderMode == module.treeMode;
-
-      Wire { from: "%surface%.browse.encoder"; to: "browser.tree_navigation" }
-
-      // <CUSTOM>
-      Wire { from: "%surface%.browse.add_to_list"; to: "browser.jump_to_prep_list" }
-      Wire { from: "%surface%.browse.favorite"; to: TriggerPropertyAdapter {
-        path: "app.traktor.browser.flip_sort_up_down"
-        color: module.deckColor
-      }}
-      // </CUSTOM>
-    }
-
-    // preview mode
-    Wire {
-      enabled: module.encoderMode == module.previewPlayerMode
-      from: "%surface%.browse.encoder";
-      to: RelativePropertyAdapter { path: "app.traktor.browser.preview_player.seek"; step: 0.01; mode: RelativeMode.Stepped }
-    }
-
     // favourites mode
     // Wire
     // {
@@ -182,5 +164,34 @@ Module
       // from: "%surface%.browse.encoder";
       // to: "browser.favorites_navigation"
     // }
+
+    // tree mode
+    // Wire
+    // {
+      // enabled: module.encoderMode == module.treeMode;
+      // from: "%surface%.browse.encoder";
+      // to: "browser.tree_navigation"
+    // }
+
+    // <CUSTOM>
+    WiresGroup {
+      enabled: module.encoderMode == module.favoritesMode
+
+      Wire { from: "%surface%.browse.encoder"; to: "browser.favorites_navigation" }
+
+      Wire { from: "%surface%.browse.add_to_list"; to: "browser.jump_to_prep_list" }
+      Wire { from: "%surface%.browse.favorite"; to: TriggerPropertyAdapter {
+        path: "app.traktor.browser.flip_sort_up_down"
+        color: module.deckColor
+      }}
+    }
+    // </CUSTOM>
+
+    // preview mode
+    Wire {
+      enabled: module.encoderMode == module.previewPlayerMode
+      from: "%surface%.browse.encoder";
+      to: RelativePropertyAdapter { path: "app.traktor.browser.preview_player.seek"; step: 0.01; mode: RelativeMode.Stepped }
+    }
   }
 }
