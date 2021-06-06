@@ -83,27 +83,14 @@ Module
   // }
 
   // <CUSTOM>
-  Beatgrid { name: "DeckA_Beatgrid"; channel: 1 }
-  Beatgrid { name: "DeckB_Beatgrid"; channel: 2 }
-  Beatgrid { name: "DeckC_Beatgrid"; channel: 3 }
-  Beatgrid { name: "DeckD_Beatgrid"; channel: 4 }
-
-  function deckLetter() {
-    switch (deckIdx) {
-    case 1:
-      return "A"
-    case 2:
-      return "B"
-    case 3:
-      return "C"
-    case 4:
-      return "D"
-    }
-  }
+  Beatgrid { name: "deck1_beatgrid"; channel: 1 }
+  Beatgrid { name: "deck2_beatgrid"; channel: 2 }
+  Beatgrid { name: "deck3_beatgrid"; channel: 3 }
+  Beatgrid { name: "deck4_beatgrid"; channel: 4 }
 
   SwitchTimer { name: "ResetHoldTimer";  setTimeout: 1000 }
   Wire { from: "%surface%.grid_adjust";  to: "ResetHoldTimer.input"; enabled: module.shift }
-  Wire { from: "ResetHoldTimer.output";  to: "Deck" + deckLetter() + "_Beatgrid.reset" }
+  Wire { from: "ResetHoldTimer.output";  to: "deck" + deckIdx + "_beatgrid.reset" }
 
   Wire {
     enabled: gridAdjustAvailable && !module.shift
@@ -114,7 +101,7 @@ Module
   Wire {
     enabled: gridAdjustAvailable && module.shift
     from: "%surface%.grid_adjust"
-    to: "Deck" + deckLetter() + "_Beatgrid.tap"
+    to: "deck" + deckIdx + "_beatgrid.tap"
   }
 
   Wire {
