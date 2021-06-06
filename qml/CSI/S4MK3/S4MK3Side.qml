@@ -82,6 +82,7 @@ Module
 
   // <CUSTOM>
   AppProperty { id: flux;  path: "app.traktor.decks." + focusedDeckIdx + ".flux.enabled" }
+  AppProperty { id: snap;  path: "app.traktor.snap" }
   // </CUSTOM>
 
   MappingPropertyDescriptor
@@ -96,6 +97,7 @@ Module
       if (focusedDeck().padsMode == PadsMode.customloop) {
         // Reset flux when exiting loop mode.
         flux.value = false
+        snap.value = true
       }
       // </CUSTOM>
 
@@ -104,6 +106,7 @@ Module
       // <CUSTOM>
       if (focusedDeck().padsMode == PadsMode.customloop) {
         flux.value = true
+        snap.value = false
       }
       // </CUSTOM>
 
