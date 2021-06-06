@@ -61,6 +61,12 @@ Tips:
 - Enable FLUX to perform quick loops while staying on beat.
 - Disable SNAP to perform loops off the grid.
 
+### Beatgrid Edit
+
+- HOLD GRID + TURN DECK to move grid lines
+- SHIFT + TAP GRID 4 TIMES to adjust BPM and grid lines to your beat
+- SHIFT + HOLD to re-analyze and reset beatgrid
+
 ## Installation
 
 **Windows:**

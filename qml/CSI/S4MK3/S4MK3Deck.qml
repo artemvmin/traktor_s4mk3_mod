@@ -59,29 +59,79 @@ Module
                                               && Helpers.deckTypeSupportsGridAdjust(deckType)
                                               && !gridLockedProp.value;
 
-  Wire
-  { 
-    enabled: gridAdjustAvailable;
+  // Wire
+  // { 
+    // enabled: gridAdjustAvailable;
+    // from: "%surface%.grid_adjust"; 
+    // to: HoldPropertyAdapter { path: deckPropertiesPath + ".grid_adjust"; value: true; color: module.deckColor }
+  // }
+
+  // Wire
+  // {
+    // enabled: gridAdjustAvailable && gridAdjustEnableProp.value;
+    // from: "%surface%.jogwheel.rotation"; 
+    // to: EncoderScriptAdapter 
+    // {
+      // onTick: 
+      // { 
+        // const minimalTickValue = 0.0035;
+        // const rotationScaleFactor = 20;
+        // if (value < -minimalTickValue || value > minimalTickValue)
+          // gridAdjust.value = value * rotationScaleFactor; 
+      // }
+    // }
+  // }
+
+  // <CUSTOM>
+  Beatgrid { name: "DeckA_Beatgrid"; channel: 1 }
+  Beatgrid { name: "DeckB_Beatgrid"; channel: 2 }
+  Beatgrid { name: "DeckC_Beatgrid"; channel: 3 }
+  Beatgrid { name: "DeckD_Beatgrid"; channel: 4 }
+
+  function deckLetter() {
+    switch (deckIdx) {
+    case 1:
+      return "A"
+    case 2:
+      return "B"
+    case 3:
+      return "C"
+    case 4:
+      return "D"
+    }
+  }
+
+  SwitchTimer { name: "ResetHoldTimer";  setTimeout: 1000 }
+  Wire { from: "%surface%.grid_adjust";  to: "ResetHoldTimer.input"; enabled: module.shift }
+  Wire { from: "ResetHoldTimer.output";  to: "Deck" + deckLetter() + "_Beatgrid.reset" }
+
+  Wire {
+    enabled: gridAdjustAvailable && !module.shift
     from: "%surface%.grid_adjust"; 
     to: HoldPropertyAdapter { path: deckPropertiesPath + ".grid_adjust"; value: true; color: module.deckColor }
   }
 
-  Wire
-  {
-    enabled: gridAdjustAvailable && gridAdjustEnableProp.value;
-    from: "%surface%.jogwheel.rotation"; 
-    to: EncoderScriptAdapter 
-    {
-      onTick: 
-      { 
-        const minimalTickValue = 0.0035;
-        const rotationScaleFactor = 20;
+  Wire {
+    enabled: gridAdjustAvailable && module.shift
+    from: "%surface%.grid_adjust"
+    to: "Deck" + deckLetter() + "_Beatgrid.tap"
+  }
+
+  Wire {
+    enabled: gridAdjustAvailable && gridAdjustEnableProp.value
+    from: "%surface%.jogwheel.rotation"
+    to: EncoderScriptAdapter {
+      onTick: {
+        const minimalTickValue = 0.0001
+        const rotationScaleFactor = 100
         if (value < -minimalTickValue || value > minimalTickValue)
-          gridAdjust.value = value * rotationScaleFactor; 
+          gridAdjust.value = value * rotationScaleFactor
       }
     }
   }
-  
+
+  // </CUSTOM>
+
   //-----------------------------------JogWheel------------------------------------//
 
 
