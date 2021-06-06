@@ -80,6 +80,10 @@ Module
 
   // Performace pads mode  //
 
+  // <CUSTOM>
+  AppProperty { id: flux;  path: "app.traktor.decks." + focusedDeckIdx + ".flux.enabled" }
+  // </CUSTOM>
+
   MappingPropertyDescriptor
   {
     id: globalPadsMode;
@@ -88,8 +92,22 @@ Module
     value: PadsMode.disabled;
     onValueChanged:
     {
-      focusedDeck().padsMode = globalPadsMode.value;
-    }  
+      // <CUSTOM>
+      if (focusedDeck().padsMode == PadsMode.customloop) {
+        // Reset flux when exiting loop mode.
+        flux.value = false
+      }
+      // </CUSTOM>
+
+      focusedDeck().padsMode = globalPadsMode.value
+
+      // <CUSTOM>
+      if (focusedDeck().padsMode == PadsMode.customloop) {
+        flux.value = true
+      }
+      // </CUSTOM>
+
+    }
   }
 
   Wire {

@@ -279,21 +279,21 @@ Module
 
   // <CUSTOM>
   // Jump pads
-  AppProperty { id: deckMoveMode;     path: "app.traktor.decks." + module.deckIdx + ".move.mode"              }
-  AppProperty { id: deckMoveSize;     path: "app.traktor.decks." + module.deckIdx + ".move.size"              }
-  AppProperty { id: deckMove;         path: "app.traktor.decks." + module.deckIdx + ".move"                   }
-  AppProperty { id: setLoopIn;        path: "app.traktor.decks." + module.deckIdx + ".loop.set.in"            }
-  AppProperty { id: setLoopOut;       path: "app.traktor.decks." + module.deckIdx + ".loop.set.out"           }
-  AppProperty { id: deckInActiveLoop; path: "app.traktor.decks." + module.deckIdx + ".loop.is_in_active_loop" }
-  AppProperty { id: deckFluxEnabled;  path: "app.traktor.decks." + module.deckIdx + ".flux.enabled"           }
+  AppProperty { id: deckMoveMode; path: "app.traktor.decks." + module.deckIdx + ".move.mode"              }
+  AppProperty { id: deckMoveSize; path: "app.traktor.decks." + module.deckIdx + ".move.size"              }
+  AppProperty { id: deckMove;     path: "app.traktor.decks." + module.deckIdx + ".move"                   }
+  AppProperty { id: setLoopIn;    path: "app.traktor.decks." + module.deckIdx + ".loop.set.in"            }
+  AppProperty { id: setLoopOut;   path: "app.traktor.decks." + module.deckIdx + ".loop.set.out"           }
+  AppProperty { id: activeLoop;   path: "app.traktor.decks." + module.deckIdx + ".loop.is_in_active_loop" }
+  AppProperty { id: flux;         path: "app.traktor.decks." + module.deckIdx + ".flux.enabled"           }
 
   readonly property real onBrightness:     1.0
   readonly property real dimmedBrightness: 0.0
   property int jumpLight: 0
 
   function updateMoveMode() {
-    deckFluxEnabled.value = false
-    if (deckInActiveLoop.value) {
+    flux.value = false
+    if (activeLoop.value) {
       deckMoveMode.value = 1
     } else {
       deckMoveMode.value = 0
@@ -437,12 +437,12 @@ Module
     Wire { from: "%surface%.pads.5";   to: "loop_pads.button5" }
     Wire { from: "%surface%.pads.6";   to: "loop_pads.button6" }
     Wire { from: "%surface%.pads.7"; to: ButtonScriptAdapter {
-      brightness: deckInActiveLoop.value ? onBrightness : dimmedBrightness;
+      brightness: activeLoop.value ? onBrightness : dimmedBrightness;
       color: Color.Blue;
       onPress: { setLoopIn.value = 1 }
     }}
     Wire { from: "%surface%.pads.8"; to: ButtonScriptAdapter {
-      brightness: deckInActiveLoop.value ? onBrightness : dimmedBrightness;
+      brightness: activeLoop.value ? onBrightness : dimmedBrightness;
       color: Color.Red;
       onPress: { setLoopOut.value = 1 }
     }}

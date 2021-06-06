@@ -29,7 +29,7 @@ Traktor Pro 3.4.2
 
 ### Jump Mode
 
-Jump mode allows you to skip around the track using the pads.  Jumping with a loop enabled moves the entire loop.
+Jump mode allows you to skip around the track using the pads. Jumping with a loop enabled moves the entire loop.
 
 - PUSH STEMS for jump mode
 
@@ -49,6 +49,8 @@ Layout (with SHIFT held):
 
 Loop mode allows you to initiate loops using the pads. Mark the start of a loop with [loop in] and initiate the loop with [loop out]. Press [loop out] to exit the loop.
 
+*Warning:* Entering loop mode enables FLUX and disabled SNAP for better loop rolls. Switching to a different mode reverts these settings. Be aware that SNAP affects loop and hotcue placement globally.
+
 - PUSH SHIFT + STEMS for loop mode
 
 Layout:
@@ -57,15 +59,15 @@ Layout:
 |:----:|:---:|:-------:|:--------:|
 |   1  |  2  | loop in | loop out |
 
-Tips:
-- Enable FLUX to perform quick loops while staying on beat.
-- Disable SNAP to perform loops off the grid.
-
 ### Beatgrid Edit
 
 - HOLD GRID + TURN DECK to move grid lines
 - SHIFT + TAP GRID 4 TIMES to adjust BPM and grid lines to your beat
 - SHIFT + HOLD to re-analyze and reset beatgrid
+
+### Global
+
+- QUANT/SNAP button is flipped to allow for easier Snap observability
 
 ## Installation
 
