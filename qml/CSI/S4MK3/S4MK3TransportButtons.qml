@@ -29,6 +29,10 @@ Module
     Wire { from: "%surface%.sync";      to: "transport.sync"              ; enabled: !module.shift }
     Wire { from: "%surface%.master";    to: "transport.master"            ; enabled: !module.shift }
     Wire { from: "%surface%.cue";       to: "transport.cue"               ; enabled: !module.shift }
-    Wire { from: "%surface%.cue";       to: "transport.return_to_zero"    ; enabled:  module.shift }
+    // Wire { from: "%surface%.cue";       to: "transport.return_to_zero"    ; enabled:  module.shift }
+
+    // <CUSTOM>
+    Wire { from: "%surface%.cue"; to: "transport.cup"; enabled: module.shift }
+    // </CUSTOM>
   }   
 }
