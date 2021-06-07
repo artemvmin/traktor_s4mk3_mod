@@ -6,6 +6,10 @@ Traktor Pro 3.4.2
 
 ## Modifications
 
+### Global
+
+- QUANT/SNAP button is flipped for better snap visibility
+
 ### Browser
 
 - Sorting:
@@ -26,13 +30,6 @@ Traktor Pro 3.4.2
 
 [1] For the optimal sync experience, set the master tempo to AUTO and sync the first track as it is running. This will match the master tempo to the tempo of the running track.
 [2] Preparation requires you to manually select a prep list by right clicking on a playlist in the Traktor software and clicking [Select as Preparation List].
-
-### Transport
-
-- QUANT/SNAP button is flipped for better snap visibility
-- SHIFT + CUE for CUE PLAY
-  - PUSH to jump to cue
-  - RELEASE to play
 
 ### Jump Mode
 
