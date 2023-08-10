@@ -40,30 +40,28 @@ Jump mode allows you to skip around the track using the pads. Jumping with a loo
 Layout:
 
 |  -4 |  +4 |  -8 |  +8 |
-|:---:|:---:|:---:|:---:|
+|-----|-----|-----|-----|
 | -16 | +16 | -32 | +32 |
 
 Layout (with SHIFT held):
 
 | -1 | +1 | -2 | +2 |
-|:--:|:--:|:--:|:--:|
+|----|----|----|----|
 | -4 | +4 | -8 | +8 |
 
 - PUSH SHIFT + STEMS for stems mode
 
 ### Loop Mode
 
-Loop mode allows you to initiate loops using the pads. Mark the start of a loop with [loop in] and initiate the loop with [loop out]. Press [loop out] to exit the loop.
-
-*Warning:* Entering loop mode enables FLUX and disabled SNAP for better loop rolls. Switching to a different mode reverts these settings. Be aware that SNAP affects loop and hotcue placement globally.
+Loop mode allows you to initiate loop rolls using the pads. Entering loop mode enables FLUX and disabled SNAP for better loop control. Switching to a different mode reverts these settings. Note that SNAP affects loop and hotcue placement globally.
 
 - PUSH SAMPLES for loop mode
 
 Layout:
 
-| 1/16 | 1/8 |   1/4   |    1/2   |
-|:----:|:---:|:-------:|:--------:|
-|   1  |  2  | loop in | loop out |
+| 1/8 loop    | 1/4 loop    | 1/2 loop    | 1 loop    |
+|-------------|-------------|-------------|-----------|
+| 1/8 reverse | 1/4 reverse | 1/2 reverse | 1 reverse |
 
 - PUSH SHIFT + SAMPLES for remix mode
 

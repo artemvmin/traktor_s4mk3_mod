@@ -20,6 +20,12 @@ Module
   property var deckColor: Helpers.colorForDeck(deckIdx)
   property bool hapticHotcuesEnabled: true
 
+  TransportSection
+  {
+    name: "transport"
+    channel: module.deckIdx
+  }
+
   MappingPropertyDescriptor {
     id: deckColorProp
     path: deckPropertiesPath + ".deck_color"
@@ -413,19 +419,19 @@ Module
   // Loop pads
   ButtonSection { name: "loop_pads";  buttons: 8; color: Color.Green; stateHandling: ButtonSection.External }
 
-  MappingPropertyDescriptor { id: loop_1_16; path: propertiesPath + ".loopSize_1_16" ; type: MappingPropertyDescriptor.Integer; value: LoopSize.loop_1_16 }
   MappingPropertyDescriptor { id: loop_1_8;  path: propertiesPath + ".loopSize_1_8"  ; type: MappingPropertyDescriptor.Integer; value: LoopSize.loop_1_8  }
   MappingPropertyDescriptor { id: loop_1_4;  path: propertiesPath + ".loopSize_1_4"  ; type: MappingPropertyDescriptor.Integer; value: LoopSize.loop_1_4  }
   MappingPropertyDescriptor { id: loop_1_2;  path: propertiesPath + ".loopSize_1_2"  ; type: MappingPropertyDescriptor.Integer; value: LoopSize.loop_1_2  }
   MappingPropertyDescriptor { id: loop_1;    path: propertiesPath + ".loopSize_1"    ; type: MappingPropertyDescriptor.Integer; value: LoopSize.loop_1    }
-  MappingPropertyDescriptor { id: loop_2;    path: propertiesPath + ".loopSize_2"    ; type: MappingPropertyDescriptor.Integer; value: LoopSize.loop_2    }
 
-  Wire { from: DirectPropertyAdapter { path: propertiesPath + ".loopSize_1_16" ; input: false } to: "loop_pads.button1.value" }
-  Wire { from: DirectPropertyAdapter { path: propertiesPath + ".loopSize_1_8"  ; input: false } to: "loop_pads.button2.value" }
-  Wire { from: DirectPropertyAdapter { path: propertiesPath + ".loopSize_1_4"  ; input: false } to: "loop_pads.button3.value" }
-  Wire { from: DirectPropertyAdapter { path: propertiesPath + ".loopSize_1_2"  ; input: false } to: "loop_pads.button4.value" }
-  Wire { from: DirectPropertyAdapter { path: propertiesPath + ".loopSize_1"    ; input: false } to: "loop_pads.button5.value" }
-  Wire { from: DirectPropertyAdapter { path: propertiesPath + ".loopSize_2"    ; input: false } to: "loop_pads.button6.value" }
+  Wire { from: DirectPropertyAdapter { path: propertiesPath + ".loopSize_1_8"  ; input: false } to: "loop_pads.button1.value" }
+  Wire { from: DirectPropertyAdapter { path: propertiesPath + ".loopSize_1_4"  ; input: false } to: "loop_pads.button2.value" }
+  Wire { from: DirectPropertyAdapter { path: propertiesPath + ".loopSize_1_2"  ; input: false } to: "loop_pads.button3.value" }
+  Wire { from: DirectPropertyAdapter { path: propertiesPath + ".loopSize_1"    ; input: false } to: "loop_pads.button4.value" }
+  Wire { from: DirectPropertyAdapter { path: propertiesPath + ".loopSize_1_8"  ; input: false } to: "loop_pads.button5.value" }
+  Wire { from: DirectPropertyAdapter { path: propertiesPath + ".loopSize_1_4"  ; input: false } to: "loop_pads.button6.value" }
+  Wire { from: DirectPropertyAdapter { path: propertiesPath + ".loopSize_1_2"  ; input: false } to: "loop_pads.button7.value" }
+  Wire { from: DirectPropertyAdapter { path: propertiesPath + ".loopSize_1"    ; input: false } to: "loop_pads.button8.value" }
 
   WiresGroup {
     enabled: padsMode == PadsMode.customloop && module.enablePads
@@ -436,19 +442,16 @@ Module
     Wire { from: "%surface%.pads.4";   to: "loop_pads.button4" }
     Wire { from: "%surface%.pads.5";   to: "loop_pads.button5" }
     Wire { from: "%surface%.pads.6";   to: "loop_pads.button6" }
-    Wire { from: "%surface%.pads.7"; to: ButtonScriptAdapter {
-      brightness: activeLoop.value ? onBrightness : dimmedBrightness;
-      color: Color.Blue;
-      onPress: { setLoopIn.value = 1 }
-    }}
-    Wire { from: "%surface%.pads.8"; to: ButtonScriptAdapter {
-      brightness: activeLoop.value ? onBrightness : dimmedBrightness;
-      color: Color.Red;
-      onPress: { setLoopOut.value = 1 }
-    }}
+    Wire { from: "%surface%.pads.7";   to: "loop_pads.button7" }
+    Wire { from: "%surface%.pads.8";   to: "loop_pads.button8" }
 
     Wire { from: "loop_pads.value";  to: "loop.autoloop_size"   }
     Wire { from: "loop_pads.active"; to: "loop.autoloop_active" }
+
+    Wire { from: "%surface%.pads.5"; to: "transport.flux_reverse" }
+    Wire { from: "%surface%.pads.6"; to: "transport.flux_reverse" }
+    Wire { from: "%surface%.pads.7"; to: "transport.flux_reverse" }
+    Wire { from: "%surface%.pads.8"; to: "transport.flux_reverse" }
   }
 
   // Auto sync loaded deck
