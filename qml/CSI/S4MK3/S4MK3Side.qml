@@ -120,28 +120,32 @@ Module
   }
 
   Wire {
-    enabled: PadsMode.isPadsModeSupported(PadsMode.remix, bottomDeck.deckType) || PadsMode.isPadsModeSupported(PadsMode.remix, topDeck.deckType);
+    // <CUSTOM>
+    enabled: PadsMode.isPadsModeSupported(PadsMode.remix, bottomDeck.deckType) || PadsMode.isPadsModeSupported(PadsMode.remix, topDeck.deckType) && shiftProp.value;
+    // </CUSTOM>
     from: "%surface%.samples";
     to: SetPropertyAdapter  { path: propertiesPath + ".pads_mode"; value: PadsMode.remix }
   }
 
-  // Wire {
-    // enabled: PadsMode.isPadsModeSupported(PadsMode.stems , focusedDeck().deckType) && shiftProp.value;
-    // from: "%surface%.stems";
-    // to: SetPropertyAdapter  { path: propertiesPath + ".pads_mode"; value: PadsMode.stems; color: Helpers.colorForDeck(focusedDeckIdx)   }
-  // }
+  Wire {
+    // <CUSTOM>
+    enabled: PadsMode.isPadsModeSupported(PadsMode.stems , focusedDeck().deckType) && shiftProp.value;
+    // </CUSTOM>
+    from: "%surface%.stems";
+    to: SetPropertyAdapter  { path: propertiesPath + ".pads_mode"; value: PadsMode.stems; color: Helpers.colorForDeck(focusedDeckIdx)   }
+  }
 
   // <CUSTOM>
+  Wire {
+    enabled: PadsMode.isPadsModeSupported(PadsMode.customloop, focusedDeck().deckType) && !shiftProp.value
+    from: "%surface%.samples"
+    to: SetPropertyAdapter  { path: propertiesPath + ".pads_mode"; value: PadsMode.customloop; color: Color.Green }
+  }
+
   Wire {
     enabled: PadsMode.isPadsModeSupported(PadsMode.customjump, focusedDeck().deckType) && !shiftProp.value
     from: "%surface%.stems"
     to: SetPropertyAdapter  { path: propertiesPath + ".pads_mode"; value: PadsMode.customjump; color: Helpers.colorForDeck(focusedDeckIdx) }
-  }
-
-  Wire {
-    enabled: PadsMode.isPadsModeSupported(PadsMode.customloop, focusedDeck().deckType) && shiftProp.value
-    from: "%surface%.stems"
-    to: SetPropertyAdapter  { path: propertiesPath + ".pads_mode"; value: PadsMode.customloop; color: Color.Green }
   }
   // </CUSTOM>
 

@@ -49,19 +49,23 @@ Layout (with SHIFT held):
 |:--:|:--:|:--:|:--:|
 | -4 | +4 | -8 | +8 |
 
+- PUSH SHIFT + STEMS for stems mode
+
 ### Loop Mode
 
 Loop mode allows you to initiate loops using the pads. Mark the start of a loop with [loop in] and initiate the loop with [loop out]. Press [loop out] to exit the loop.
 
 *Warning:* Entering loop mode enables FLUX and disabled SNAP for better loop rolls. Switching to a different mode reverts these settings. Be aware that SNAP affects loop and hotcue placement globally.
 
-- PUSH SHIFT + STEMS for loop mode
+- PUSH SAMPLES for loop mode
 
 Layout:
 
 | 1/16 | 1/8 |   1/4   |    1/2   |
 |:----:|:---:|:-------:|:--------:|
 |   1  |  2  | loop in | loop out |
+
+- PUSH SHIFT + SAMPLES for remix mode
 
 ### Beatgrid Edit
 
